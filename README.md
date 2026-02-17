@@ -112,7 +112,7 @@ That’s it
 
 ## Author
 
-Your Name Here  
+Lokendra Joshi  
 
 Made with ❤️ using HTML, CSS & JavaScript.
 
