@@ -54,16 +54,6 @@ No frameworks used. Pure frontend development.
 
 ---
 
-## Folder Structure
-arithmetic-and-unit-converter-calculator/
-│
-├── index.html
-├── style.css
-├── script.js
-└── README.md
-
-
----
 
 ## How It Works
 
