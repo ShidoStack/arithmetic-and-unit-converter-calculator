@@ -1,0 +1,366 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #8e98c2;
+}
+
+/* APP WRAPPER */
+.app {
+    max-width: 340px; /* Reduced width */
+    margin: 60px auto;
+    position: relative;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+/* TAB CONTAINER */
+.tab-container {
+  position: relative;
+  display: flex;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50px;
+  padding: 6px;
+  backdrop-filter: blur(10px);
+  height: 60px;
+  align-items: center;
+}
+
+/* SLIDING INDICATOR */
+.tab-indicator {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  height: calc(100% - 12px);
+  width: calc(50% - 6px);
+  background: rgba(255,255,255,0.35);
+  border-radius: 50px;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+  z-index: 0;
+}
+
+/* TAB BUTTON */
+.tab {
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  color: black;
+  font-weight: 500;
+  transition: transform 0.1s ease;
+}
+
+/* PRESS EFFECT */
+.tab:active {
+  transform: scale(0.96);
+}
+
+/* SVG ICON */
+.tab-icon {
+  width: 22px;
+  height: 22px;
+  fill: black;
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+  width: 55px;
+  height: 55px;
+  border-radius: 70%;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(8px);
+}
+
+
+/* ROUND ICON BUTTONS */
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 20%;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    background: #f4f4f4;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    transform: scale(1.1);
+}
+
+.icon-btn.active {
+    background: #e85d5d;
+    color: white;
+}
+
+/* CALCULATOR CARD */
+.calculator-card {
+    background: #f4f4f4;
+    padding: 25px 18px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* DISPLAY */
+#display {
+    width: 100%;
+    height: 75px;
+    font-size: 42px;
+    text-align: right;
+    border: none;
+    background: transparent;
+    margin-bottom: 25px;
+    padding-right: 10px;
+    font-weight: 300;
+}
+
+/* BUTTON GRID */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+/* BASE BUTTON */
+.btn {
+    height: 60px;
+    font-size: 20px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* ZERO BUTTON */
+.zero {
+    grid-column: span 2;
+    border-radius: 40px;
+}
+
+/* NUMBER BUTTONS */
+.number {
+    background: #000;
+    color: #fff;
+}
+
+/* YELLOW FUNCTION BUTTONS */
+.func-yellow {
+    background: #f6c85f;
+    color: #000;
+}
+
+/* RED OPERATORS */
+.operator-red {
+    background: #e85d5d;
+    color: #fff;
+}
+
+/* CONVERSION SECTION FIX */
+.section {
+    display: none;
+}
+
+.active-section {
+    display: block;
+}
+
+/* Hide converter by default */
+.converter-screen {
+    display: none;
+}
+
+/* DARK MODE */
+.dark {
+    background: #1e1e2f;
+}
+
+.dark .header {
+    background: transparent;
+}
+
+.dark .tab-container {
+    background: rgba(255,255,255,0.08);
+}
+
+.dark .tab-indicator {
+    background: rgba(255,255,255,0.15);
+}
+
+.dark .tab {
+    color: white;
+}
+
+.dark .tab-icon {
+    fill: white;
+}
+
+.dark .calculator-card {
+    background: #000;
+}
+
+.dark #display {
+    color: #fff;
+}
+
+.dark .number {
+    background: #333;
+    color: #fff;
+}
+
+
+/* ===============================
+   CONVERSION MENU GRID
+================================ */
+
+#conversionMenu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+#conversionMenu button {
+    padding: 12px 8px;
+    border-radius: 14px;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    background: #f4f4f4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+}
+
+#conversionMenu button:hover {
+    transform: translateY(-2px);
+}
+
+#conversionMenu button:active {
+    transform: scale(0.95);
+}
+
+/* ===============================
+   CONVERTER SCREEN
+================================ */
+
+.converter-screen {
+    background: #f4f4f4;
+    padding: 20px 18px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    margin-top: 20px;
+}
+
+.unit-block {
+    margin-bottom: 18px;
+}
+
+.unit-block label {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.big-number {
+    font-size: 32px;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+.conv-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.conv-header button {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.conv-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.keypad button {
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    transition: 0.2s;
+}
+
+.keypad button:hover {
+    transform: scale(1.05);
+}
+
+.keypad button:active {
+    transform: scale(0.92);
+}
+
+.dark #conversionMenu button {
+    background: #333;
+    color: white;
+}
+
+.dark .converter-screen {
+    background: #000;
+}
+
+.dark .keypad button {
+    background: #333;
+    color: white;
+}
+
+.dark .conv-header button {
+    color: white;
+}
+
+.dark .big-number {
+    color: white;
+}
+
+body.dark .converter-screen {
+    background: #000;
+    color: #ffffff;
+}
+
+body.dark .converter-screen label,
+body.dark .converter-screen .big-number,
+body.dark .converter-screen h2,
+body.dark .converter-screen button {
+    color: #ffffff;
+}
+

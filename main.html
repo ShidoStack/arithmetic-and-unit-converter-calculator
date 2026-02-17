@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Smart Calculator</title>
+    <link rel="stylesheet" href="style/style.css" />
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="tab-container">
+                <div class="tab-indicator"></div>
+
+                <button class="tab active" data-tab="calc">
+                    <svg class="tab-icon" viewBox="0 0 24 24">
+                        <rect x="4" y="2" width="16" height="20" rx="3"></rect>
+                    </svg>
+                    <span>Calc</span>
+                </button>
+
+                <button class="tab" data-tab="convert">
+                    <svg class="tab-icon" viewBox="0 0 24 24">
+                        <path d="M7 7h10v4h-3l4 4 4-4h-3V5H7z"></path>
+                    </svg>
+                    <span>Convert</span>
+                </button>
+            </div>
+
+            <!-- Theme toggle -->
+            <button class="theme-toggle">🌙</button>
+        </header>
+
+
+        <!-- CALCULATOR -->
+        <div id="calculatorSection" class="section active-section">
+            <div class="calculator-card">
+                <input type="text" id="display" disabled />
+
+                <div class="buttons">
+                    <!-- TOP FUNCTION ROW -->
+                    <button class="btn func-yellow" onclick="clearDisplay()">C</button>
+                    <button class="btn func-yellow" onclick="toggleSign()">+/-</button>
+                    <button class="btn func-yellow" onclick="append('%')">%</button>
+                    <button class="btn operator-red" onclick="append('/')">/</button>
+
+                    <!-- NUMBERS -->
+                    <button class="btn number" onclick="append('7')">7</button>
+                    <button class="btn number" onclick="append('8')">8</button>
+                    <button class="btn number" onclick="append('9')">9</button>
+                    <button class="btn operator-red" onclick="append('*')">*</button>
+
+                    <button class="btn number" onclick="append('4')">4</button>
+                    <button class="btn number" onclick="append('5')">5</button>
+                    <button class="btn number" onclick="append('6')">6</button>
+                    <button class="btn operator-red" onclick="append('-')">-</button>
+
+                    <button class="btn number" onclick="append('1')">1</button>
+                    <button class="btn number" onclick="append('2')">2</button>
+                    <button class="btn number" onclick="append('3')">3</button>
+                    <button class="btn operator-red" onclick="append('+')">+</button>
+
+                    <button class="btn number zero" onclick="append('0')">0</button>
+                    <button class="btn number" onclick="append('.')">.</button>
+                    <button class="btn operator-red" onclick="calculate()">=</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONVERSION SECTION (UNCHANGED FUNCTIONALITY) -->
+        <div id="conversionSection" class="section">
+            <div id="conversionMenu" class="grid">
+                <button onclick="openConverter('length')">Length</button>
+                <button onclick="openConverter('mass')">Mass</button>
+                <button onclick="openConverter('temperature')">Temperature</button>
+                <button onclick="openConverter('area')">Area</button>
+                <button onclick="openConverter('data')">Data</button>
+                <button onclick="openConverter('speed')">Speed</button>
+                <button onclick="openConverter('time')">Time</button>
+                <button onclick="openConverter('volume')">Volume</button>
+                <button onclick="openConverter('discount')">Discount</button>
+                <button onclick="openConverter('bmi')">BMI</button>
+                <button onclick="openConverter('currency')">Currency</button>
+            </div>
+
+            <div id="converterScreen" class="converter-screen">
+                <div class="conv-header">
+                    <button onclick="closeConverter()">←</button>
+                    <h2 id="convTitle"></h2>
+                </div>
+
+                <div class="conv-body">
+                    <div class="unit-block">
+                        <label id="unit1Label"></label>
+                        <div id="unit1Value" class="big-number">0</div>
+                    </div>
+
+                    <div id="discountExtra" style="display: none">
+                        <div class="unit-block">
+                            <label>Discount %</label>
+                            <div id="discountPercent" class="big-number">0</div>
+                        </div>
+
+                        <div class="unit-block">
+                            <label>Discount Amount</label>
+                            <div id="discountAmount" class="big-number">0</div>
+                        </div>
+                    </div>
+
+                    <div id="bmiExtra" style="display: none">
+                        <div class="unit-block">
+                            <label>Weight (kg)</label>
+                            <div id="bmiWeight" class="big-number">0</div>
+                        </div>
+
+                        <div class="unit-block">
+                            <label>Height (m)</label>
+                            <div id="bmiHeight" class="big-number">0</div>
+                        </div>
+
+                        <div class="unit-block">
+                            <label>BMI Result</label>
+                            <div id="bmiResult" class="big-number">0</div>
+                        </div>
+
+                        <div class="unit-block">
+                            <label>Category</label>
+                            <div id="bmiCategory" class="big-number">-</div>
+                        </div>
+
+                        <button onclick="switchBmiInput()">Switch Input</button>
+                    </div>
+
+                    <div class="unit-block">
+                        <label id="unit2Label"></label>
+                        <div id="unit2Value" class="big-number">0</div>
+                    </div>
+                </div>
+
+                <div id="discountSwitch" style="display: none">
+                    <button onclick="switchDiscountInput()">Switch Input</button>
+                </div>
+
+                <div class="keypad">
+                    <button onclick="press('7')">7</button>
+                    <button onclick="press('8')">8</button>
+                    <button onclick="press('9')">9</button>
+                    <button onclick="clearInput()">AC</button>
+
+                    <button onclick="press('4')">4</button>
+                    <button onclick="press('5')">5</button>
+                    <button onclick="press('6')">6</button>
+                    <button onclick="deleteInput()">DEL</button>
+
+                    <button onclick="press('1')">1</button>
+                    <button onclick="press('2')">2</button>
+                    <button onclick="press('3')">3</button>
+                    <button onclick="toggleSign()">+/-</button>
+
+                    <button></button>
+                    <button onclick="press('0')">0</button>
+                    <button onclick="press('.')">.</button>
+                    <button></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/script.js"></script>
+</body>
+
+</html>
